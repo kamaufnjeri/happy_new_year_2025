@@ -65,7 +65,7 @@
   height: 100vh;
   padding: 20px;
   border-radius: 10px;
-  color: #FFD700;
+  color: #FF0000;
   background: #000000;
   opacity: 0.9;
 }
@@ -114,7 +114,6 @@
 }
 
 .new-year-text {
-  color: #FFFFFF;
   padding: 10px;
 }
 
@@ -124,7 +123,7 @@
   flex-direction: column;
   text-align: justify;
   width: 90vw;
-
+  color: #FFFFFF;
   opacity: 0;
   font-size: 25px;
   font-weight: 900;
@@ -147,7 +146,7 @@
 .vistor-greetings {
   align-self: flex-start;
   font-family: "Pacifico", cursive;
-  color: #FF0000;
+  color: #FFD700;
   font-weight: 900;
   font-size: 40px;
 
@@ -168,8 +167,9 @@
   display: flex;
   font-size: 40px;
   flex-direction: column;
-  color: #FF0000;
+  color: #FFD700;
   font-family: "Pacifico", cursive;
+  gap: 5px;
   
   @media screen and (max-width: 850px) {
     font-size: 30px;
