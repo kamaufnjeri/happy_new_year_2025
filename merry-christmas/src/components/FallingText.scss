@@ -106,7 +106,9 @@
      font-size: 20px;
     }
 }
-
+.new-year {
+  margin-bottom: 50px;
+}
 @keyframes dance {
   0% {
     transform: translateY(0) rotate(0deg) scale(1);
@@ -241,8 +243,8 @@
   right: 0;
   bottom: 0;
   mix-blend-mode: lighten;
-  width: 100px;
-  height: 100px;
+  width: 200px;
+  height: 200px;
   animation: move_santa 30s infinite ease-in-out;
 }
 

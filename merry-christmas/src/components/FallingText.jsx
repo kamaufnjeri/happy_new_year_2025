@@ -118,7 +118,7 @@ const FallingText = () => {
 
 
           </div>
-            <div className='header-text'>
+            <div className='header-text new-year'>
 
               <span className='header-text'>{newYearMessage}</span>
             </div>
