@@ -124,6 +124,10 @@ const FallingText = () => {
             <div className='message-box'>
               <span className='vistor-greetings'>{greetings}</span>
               <p>{bodyMessage}</p>
+              <div className='end-message'>
+                <span>Yours Lovely;</span>
+                <p>Florence</p>
+              </div>
             </div>
           </>
         )}

@@ -146,7 +146,8 @@
 
 }
 .vistor-greetings {
-  align-self: center;
+  align-self: flex-start;
+  font-family: "Pacifico", cursive;
   color: #FF0000;
   font-weight: 900;
   font-size: 50px;
@@ -165,6 +166,35 @@
     
     @media screen and (max-width: 430px) {
      font-size: 20px;
+    }
+}
+.end-message {
+  align-self: flex-end;
+  text-align: right;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  color: #FF0000;
+  font-family: "Pacifico", cursive;
+  margin-top: -20px;
+  
+  @media screen and (max-width: 850px) {
+    font-size: 40px;
+    margin-bottom: -20px;
+
+   }
+   @media screen and (max-width: 650px) {
+     font-size: 30px;
+     margin-bottom: -10px;
+
+    }
+    
+    @media screen and (max-width: 430px) {
+     font-size: 20px;
+    }
+
+    p {
+      margin-top: -10px;
     }
 }
 
