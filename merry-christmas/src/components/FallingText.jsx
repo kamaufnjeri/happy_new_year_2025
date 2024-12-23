@@ -61,7 +61,7 @@ const FallingText = () => {
   }
 
   const writeNewYearMessage = () => {
-    const message = "and a Happy New Year"
+    const message = "AND A HAPPY NEW YEAR"
     let index = 0;
     const typeLetterByLetter = () => {
       if (index < message.length) {
@@ -95,21 +95,21 @@ const FallingText = () => {
 
       <div className='sub-container'>
         {show && (
-          <><div className="falling-text-box">
+          <><div className="falling-text-box header-text">
             {firstWord.map((letter, index) => (
               <span
                 key={index}
-                className="falling-text header-text"
+                className="falling-text "
                 style={{ '--index': index }}
               >
                 {letter}
               </span>
             ))}
-            <span className="falling-text header-text">&nbsp;</span>
+            <span className="falling-text ">&nbsp;</span>
             {secondWord.map((letter, index) => (
               <span
                 key={index + firstWord.length}
-                className="falling-text header-text"
+                className="falling-text"
                 style={{ '--index': index + firstWord.length }}
               >
                 {letter}
@@ -118,8 +118,9 @@ const FallingText = () => {
 
 
           </div>
-            <div>
-              <span className='header-text new-year-text'>{newYearMessage}</span>
+            <div className='header-text'>
+
+              <span className='header-text'>{newYearMessage}</span>
             </div>
             <div className='message-box'>
               <span className='vistor-greetings'>{greetings}</span>
