@@ -136,7 +136,7 @@ const FallingText = () => {
               <span className='header-text'>{newYearMessage}</span>
             </div>
             {(sender && receiver && message) && <div className='message-box'>
-              <span className='vistor-greetings'>Dear {receiver}</span>
+              <span className='vistor-greetings'>Dear {receiver},</span>
               <p>{message}</p>
               <div className='end-message'>
                 <span>Yours Lovely;</span>
