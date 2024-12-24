@@ -17,7 +17,7 @@ const FallingText = () => {
   const [show, setShow] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const snowContainerRef = useRef(null);
-  
+
 
   const decodeNames = (encoded) => {
     const decoded = atob(encoded);
@@ -102,7 +102,7 @@ const FallingText = () => {
   return (
     <div className="main-container" ref={snowContainerRef}>
       {openModal && <CreateModal
-        senderName={sender}
+        senderName={receiver}
         closeModal={closeModal}
         openModal={openModal}
       />}
@@ -142,21 +142,16 @@ const FallingText = () => {
                 <span>Yours Lovely;</span>
                 <p>{sender}</p>
               </div>
+              <button className='submit-btn' onClick={() => setOpenModal(true)}>Share</button>
+              
             </div>}
           </>
         )}
 
       </div>
-      <button className='submit-btn' onClick={() => setOpenModal(true)}>Share</button>
 
-      <video autoPlay loop muted className='dancing-santa-left'>
-        <source src="/assets/dancing_santa.webm" type="video/webm" />
-        Your browser does not support the video tag.
-      </video>
-      <video autoPlay loop muted className='dancing-santa-right'>
-        <source src="/assets/dancing_santa.webm" type="video/webm" />
-        Your browser does not support the video tag.
-      </video>
+
+
       <AudioPlayer />
     </div>
   );
