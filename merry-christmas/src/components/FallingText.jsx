@@ -1,21 +1,29 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './FallingText.scss';
-import { SNOWFLAKEIMAGE } from '../constants';
-import { useLocation } from 'react-router-dom';
+import { Message, SNOWFLAKEIMAGE } from '../constants';
 import AudioPlayer from './AudioPlayer';
-
+import CreateModal from './CreateModal';
+import { useParams } from 'react-router-dom';
 
 const FallingText = () => {
   const firstWord = ['M', 'E', 'R', 'R', 'Y'];
   const secondWord = ['C', 'H', 'R', 'I', 'S', 'T', 'M', 'A', 'S'];
   const [newYearMessage, setNewYearMessage] = useState('');
-  const [bodyMessage, setBodyMessage] = useState('');
-  const [greetings, setGreetings] = useState();
-  const location = useLocation();
   const snowFlakesNumbers = 200;
-
-
+  const [message, setMessage] = useState('');
+  const { encodedNames } = useParams();
+  const [sender, setSender] = useState('Florence');
+  const [receiver, setReceiver] = useState('Friend');
+  const [show, setShow] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
   const snowContainerRef = useRef(null);
+  
+
+  const decodeNames = (encoded) => {
+    const decoded = atob(encoded);
+    return decoded.split('_');
+  };
+
 
   useEffect(() => {
     const snowContainer = snowContainerRef.current;
@@ -38,28 +46,6 @@ const FallingText = () => {
     }
   }, []);
 
-
-
-  const [show, setShow] = useState(false);
-
-  const getGreetings = () => {
-    const params = new URLSearchParams(location.search);
-    const nameParams = params.get('name')
-    
-  
-  
-
-    if (nameParams) {
-      const updatedName = nameParams.replace(/_/g, ' ') 
-      .replace(/\b\w/g, char => char.toUpperCase()); 
-      setGreetings(`Dear ${updatedName}!`)
-
-    } else {
-      setGreetings('Dear Friend!')
-    }
-    setBodyMessage("May this festive season bring you joy, peace, and the warmth of God's blessings. As we step into the new year, may it be filled with happiness, prosperity, and the fulfillment of your dreams. May God's love guide you, and may this year be your best one yet, full of hope, grace, and new beginnings. Here's to a blessed year ahead, full of growth, peace, and success in all that you do.");
-  }
-
   const writeNewYearMessage = () => {
     const message = "AND A HAPPY NEW YEAR"
     let index = 0;
@@ -80,19 +66,46 @@ const FallingText = () => {
 
   useEffect(() => {
     setShow(true);
+    setMessage(Message);
+
+    if (encodedNames) {
+      const decoded = decodeNames(encodedNames);
+
+      if (decoded && decoded.length === 2) {
+        console.log(decoded);
+        setSender(decoded[0]);
+        setReceiver(decoded[1]);
+      } else {
+        setSender('Florence');
+        setReceiver('Friend');
+      }
+
+    } else {
+      setSender('Florence');
+      setReceiver('Friend');
+    }
+
     const timer = setTimeout(() => {
       writeNewYearMessage();
 
       return () => clearTimeout(bodyTimer);
     },
       4500);
-    getGreetings();
+
     return () => clearTimeout(timer);
   }, []);
 
+  const closeModal = () => {
+    setOpenModal(false);
+  }
+
   return (
     <div className="main-container" ref={snowContainerRef}>
-
+      {openModal && <CreateModal
+        senderName={sender}
+        closeModal={closeModal}
+        openModal={openModal}
+      />}
       <div className='sub-container'>
         {show && (
           <><div className="falling-text-box header-text">
@@ -122,25 +135,29 @@ const FallingText = () => {
 
               <span className='header-text'>{newYearMessage}</span>
             </div>
-            <div className='message-box'>
-              <span className='vistor-greetings'>{greetings}</span>
-              <p>{bodyMessage}</p>
+            {(sender && receiver && message) && <div className='message-box'>
+              <span className='vistor-greetings'>Dear {receiver}</span>
+              <p>{message}</p>
               <div className='end-message'>
                 <span>Yours Lovely;</span>
-                <p>Florence</p>
+                <p>{sender}</p>
               </div>
-            </div>
+            </div>}
           </>
         )}
 
-
       </div>
+      <button className='submit-btn' onClick={() => setOpenModal(true)}>Share</button>
 
-      <video autoPlay loop muted className='dancing-santa'>
+      <video autoPlay loop muted className='dancing-santa-left'>
         <source src="/assets/dancing_santa.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
-      <AudioPlayer/>
+      <video autoPlay loop muted className='dancing-santa-right'>
+        <source src="/assets/dancing_santa.webm" type="video/webm" />
+        Your browser does not support the video tag.
+      </video>
+      <AudioPlayer />
     </div>
   );
 

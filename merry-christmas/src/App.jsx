@@ -8,7 +8,7 @@ const App = () => {
       <div className="App">
         <Routes>
         <Route path='/' element={<FallingText />} />
-
+        <Route path='/:encodedNames' element={<FallingText/>}/>
         </Routes>
       </div>
     </BrowserRouter>

@@ -4,30 +4,24 @@
 
 .main-container {
   display: flex;
-  justify-content: center;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background-image: url('/assets/laptop_background.jpg');
+  background-image: url('/assets/background_2.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
 
-  @media  screen and (max-width: 768px) {
-    background-image: url('/assets/tablet_background.jpg')
-  }
-
-  @media  screen and (max-width: 540px) {
-    background-image: url('/assets/phone_background.jpg')
-  }
-
-  @media  screen and (max-width: 320px) {
-    background-size: 340px 600px;
-  }
+ 
+  @media screen and (max-height: 500px) {
+    overflow: scroll;
+    
+   }
+ 
  
 }
 .snow-flake {
@@ -42,11 +36,11 @@
 @keyframes snow_fall {
   0% {
     transform: translate(0, 0);
-    opacity: 1;
+    opacity: 0.5;
   }
   50% {
     transform: translate(20px, 50vh);
-    opacity: 0;
+    opacity: 0.8;
   }
   100% {
     transform: translate(0, 100vh);
@@ -56,25 +50,23 @@
 
 .sub-container {
   display: flex;
-  justify-content: center;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  align-self: center;
   width: 100vw;
   height: 100vh;
   padding: 20px;
   border-radius: 10px;
-  color: #FF0000;
-  background: #000000;
-  opacity: 0.8;
+  color: #FFFFFF;
+  z-index: 15;
+  @media screen and (max-height: 500px) {
+    justify-content: flex-start;
+   }
 }
   
 .falling-text-box {
   display: flex;
   text-align: center;
-  padding: 10px;
-  margin-top: -120px;
 
   
   .spacer {
@@ -102,28 +94,31 @@
      font-size: 30px;
     }
     
-    @media screen and (max-width: 430px) {
+    @media screen and (max-width: 550px) {
      font-size: 20px;
     }
+
+    @media screen and (max-width: 400px) {
+      font-size: 16px;
+     }
 }
-.new-year {
-  margin-bottom: 50px;
-}
+
+
 @keyframes dance {
   0% {
     transform: translateY(0) rotate(0deg) scale(1);
     color: #ff6347;
   }
   25% {
-    transform: translateY(-20px) rotate(-10deg) scale(1.1);
+    transform: translateY(-5px) rotate(-5deg) scale(1.1);
     color: #ffd700;
   }
   50% {
-    transform: translateY(0) rotate(10deg) scale(1);
+    transform: translateY(0) rotate(5deg) scale(1);
     color: #adff2f;
   }
   75% {
-    transform: translateY(20px) rotate(-10deg) scale(1.1);
+    transform: translateY(5px) rotate(-5deg) scale(1.1);
     color: #00fa9a;
   }
   100% {
@@ -138,6 +133,31 @@
   animation-delay: calc(0.2s * var(--index));  
 
 }
+
+.submit-btn {
+  border: 2px solid #108ae7;
+  height: 40px;
+  background: #FFFFFF;
+  color: #108ae7;
+  border-radius: 10px;
+  outline: none;
+  width: 150px;
+  transition: all 1s ease-in-out;
+  box-shadow: -5px 5px 5px rgb(0, 0, 0, 0.5);
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  z-index: 15;
+  bottom: 20px;
+
+ }
+
+ .submit-btn:hover {
+  background: #108ae7;
+  color: #FFFFFF;
+  transform: scale(1.1);
+
+ }
 
 @keyframes fall {
   0% {
@@ -159,7 +179,8 @@
   align-self: center;
   flex-direction: column;
   text-align: justify;
-  width: 90vw;
+  margin-top: 40px;
+
   color: #FFFFFF;
   opacity: 0;
   font-size: 25px;
@@ -175,7 +196,7 @@
      font-size: 18px;
     }
     
-    @media screen and (max-width: 430px) {
+    @media screen and (max-width: 450px) {
      font-size: 16px;
     }
 
@@ -238,14 +259,15 @@
     }
 }
 
-.dancing-santa {
+
+.dancing-santa-right {
   position: absolute;
   right: 0;
   bottom: 0;
   mix-blend-mode: lighten;
   width: 300px;
   height: 300px;
-  animation: move_santa 30s infinite ease-in-out;
+  animation: move_santa_right 30s infinite ease-in-out;
 }
 
 .audio {
@@ -253,17 +275,45 @@
   
 }
 
-@keyframes move_santa {
+@keyframes move_santa_right {
   0% {
     transform: translateX(0);
   
   } 
   50% {
-    transform: translateX(-50vw);
+    transform: translateX(-35vw);
     }
     100% {
-      transform: translateX(30vw);  
+      transform: translateX(0vw);  
     }
 }
+
+
+
+.dancing-santa-left {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  mix-blend-mode: lighten;
+  width: 300px;
+  height: 300px;
+  animation: move_santa_left 30s infinite ease-in-out;
+}
+
+
+
+@keyframes move_santa_left {
+  0% {
+    transform: translateX(0);
+  
+  } 
+  50% {
+    transform: translateX(35vw);
+    }
+    100% {
+      transform: translateX(0vw);  
+    }
+}
+
 
 

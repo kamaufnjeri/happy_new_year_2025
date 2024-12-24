@@ -1,0 +1,150 @@
+.modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+    background-image: url('/assets/background_2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.form-container {
+    width: 40vw;
+    height: 600px;
+    border-radius: 10px;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    justify-content: center;
+    gap: 10px;
+    z-index: 20;
+    position: relative;
+
+    .close-btn {
+        border: none;
+        outline: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 30px;
+        font-weight: 900;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    .close-btn:hover {
+        box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.5);
+        background: transparent;
+    }
+
+    .share-btn {
+        border: 2px solid #108ae7;
+        height: 40px;
+        background: #FFFFFF;
+        color: #108ae7;
+        border-radius: 10px;
+        outline: none;
+        width: 150px;
+        transition: all 1s ease-in-out;
+        box-shadow: -5px 5px 5px rgb(0, 0, 0, 0.5);
+        cursor: pointer;
+    }
+    .url-box {
+        word-wrap: break-word;
+        width: 90%;
+        
+    }
+    a.whatsapp-btn {
+        text-decoration: none;
+        color: #FFFFFF;
+        background: #128C7E;
+        border-radius: 30px;
+        padding: 10px;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .share-btn:hover {
+        background: #108ae7;
+        color: #FFFFFF;
+        transform: scale(1.1);
+    }
+   
+    
+
+    span {
+        display: grid;
+        align-self: center;
+        grid-template-columns: 1fr 2fr;
+        width: 90%;
+        gap: 10px;
+
+        @media screen and (max-width: 500px) {
+            display: flex;
+            align-self: center;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+        }
+
+        input {
+            box-shadow: -5px 5px 5px rgb(0, 0, 0, 0.5);
+            border: none;
+            font-weight: 600;
+            outline: none;
+            border-radius: 10px;
+            padding: 10px;
+            border: solid 2px #CCCCCC;
+        }
+    }
+    
+}
+
+// Media queries should be placed outside of the class declarations.
+@media screen and (max-width: 1200px) {
+    .form-container {
+        width: 50vw;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .form-container {
+        width: 60vw;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .form-container {
+        width: 80vw;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .form-container {
+        width: 90vw;
+    }
+}
+
+@media screen and (max-height: 600px) {
+    .modal {
+        align-items: flex-start;
+        margin: 20px;
+    }
+    .form-container {
+        
+        height: 500px;
+    }
+}
