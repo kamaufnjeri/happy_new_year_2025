@@ -6,8 +6,9 @@ import CreateModal from './CreateModal';
 import { useParams } from 'react-router-dom';
 
 const FallingText = () => {
-  const firstWord = ['M', 'E', 'R', 'R', 'Y'];
-  const secondWord = ['C', 'H', 'R', 'I', 'S', 'T', 'M', 'A', 'S'];
+  const firstWord = ['H', 'A', 'P', 'P', 'Y'];
+  const secondWord = ['N', 'E', 'W']
+  const thirdWord = ['Y', 'E', 'A', 'R'];
   const [newYearMessage, setNewYearMessage] = useState('');
   const snowFlakesNumbers = 200;
   const [message, setMessage] = useState('');
@@ -47,7 +48,7 @@ const FallingText = () => {
   }, []);
 
   const writeNewYearMessage = () => {
-    const message = "AND A HAPPY NEW YEAR"
+    const message = "2025"
     let index = 0;
     const typeLetterByLetter = () => {
       if (index < message.length) {
@@ -128,6 +129,16 @@ const FallingText = () => {
                 {letter}
               </span>
             ))}
+            <span className="falling-text ">&nbsp;</span>
+            {thirdWord.map((letter, index) => (
+              <span
+                key={index + firstWord.length}
+                className="falling-text"
+                style={{ '--index': index + firstWord.length }}
+              >
+                {letter}
+              </span>
+            ))}
 
 
           </div>
@@ -143,7 +154,7 @@ const FallingText = () => {
                 <p>{sender}</p>
               </div>
               <button className='submit-btn' onClick={() => setOpenModal(true)}>Share</button>
-              
+
             </div>}
           </>
         )}
