@@ -45,7 +45,7 @@ const CreateModal = ({ closeModal, openModal, senderName }) => {
 
   const generateWhatsAppLink = (sender, receiver, url) => {
     const message = `
-    *Merry Christmas* ${receiver}!
+    *Happy New Year* ${receiver}!
 
     From: *${sender}* 
 
